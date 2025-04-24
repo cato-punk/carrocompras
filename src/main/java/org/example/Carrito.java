@@ -53,7 +53,22 @@ public class Carrito {
     }
 
     private static void agregarProducto() {
-        // TODO: Solicitar nombre y precio, validar, y agregar al carrito si no existe.
+        System.out.println("\n--- Agregar Producto ---");
+        Scanner scanner = new Scanner(System.in); // Usamos el scanner estático de la clase
+
+        System.out.print("Ingrese el nombre del producto: ");
+        String nombre = scanner.nextLine(); // Leemos la línea completa ingresada por el usuario
+
+        System.out.print("Ingrese el precio del producto: ");
+        double precio = -1; // si fuera texto seguiria siendo -1
+        if (scanner.hasNextDouble()) {
+            precio = scanner.nextDouble();
+            scanner.nextLine(); // Consumir la nueva línea pendiente después de leer el double
+        } else {
+            System.out.println("Precio inválido. Intente de nuevo.");
+            scanner.nextLine(); // Limpiar la entrada incorrecta
+            return;
+        }
     }
 
 
