@@ -1,17 +1,62 @@
 package org.example;
+import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
+
+public class Carrito {
+    private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        menu();
+    }
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+    public static void menu() {
+        int opcion;
+        do {
+            mostrarOpciones();
+            opcion = obtenerOpcion();
+            ejecutarOpcion(opcion);
+        } while (opcion != 5);
+    }
+
+
+    private static void mostrarOpciones() {
+        System.out.println("\n=========================================" );
+        System.out.println("            IMPERIO                        " );
+        System.out.println("      Gestión de Pistolas                  " );
+        System.out.println("===========================================" );
+        System.out.println("    [1] Agregar un producto                " );
+        System.out.println("    [2] Eliminar un producto               " );
+        System.out.println("    [3] Calcular el total de su carrito    " );
+        System.out.println("    [4] Aplicar descuento                  " );
+        System.out.println("    [5] Listar productos                   " );
+        System.out.println("    [6]    Salir                           ");
+        System.out.println("===========================================" );
+        System.out.print("      Opcion: ");
+    }
+
+
+    private static int obtenerOpcion() {
+        return Integer.parseInt(scanner.nextLine());
+    }
+
+
+    private static void ejecutarOpcion(int opcion) {
+        switch (opcion) {
+            case 1 -> agregarProducto();
+            case 2 -> eliminarProducto();
+            case 3 -> calcularTotal();
+            case 4 -> aplicarDescuento();
+            case 5 -> listarProductos();
+            case 6 -> System.out.println("  Hasta pronto vuleve a comprar con nosotros...");
+            default -> System.out.println(" Opcion invalida...");
         }
     }
+
+    private static void agregarProducto() {
+        // TODO: Solicitar nombre y precio, validar, y agregar al carrito si no existe.
+    }
+
+
 }
+
+
